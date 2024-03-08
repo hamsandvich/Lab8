@@ -1,5 +1,6 @@
 package com.example.lab8;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +60,21 @@ public class CustomList extends ArrayAdapter<City> {
      */
     public void addCity(City city){
         cities.add(city);
+    }
+
+    // In CustomList.java
+    public boolean hasCity(String cityName) {
+        for (City city : cities) {
+            if (city.getCityName().equals(cityName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    // In CustomList.java
+    @SuppressLint("NewApi")
+    public void deleteCity(String cityName) {
+        cities.removeIf(city -> city.getCityName().equals(cityName));
     }
 
 
